@@ -47,6 +47,8 @@ console.log(chalk.green('='.repeat(50)));
 // Translate text using Google Translate API
 async function translateText(text, targetLang, sourceLang = null) {
   try {
+    console.log(chalk.blue('[DEBUG] Translation request:'), text, 'to', targetLang);
+    
     // If source language is not provided, let Google Translate detect it
     if (!sourceLang) {
       sourceLang = 'auto';
@@ -61,6 +63,7 @@ async function translateText(text, targetLang, sourceLang = null) {
     };
     
     const result = await translate(text, options);
+    console.log(chalk.green('[DEBUG] Translation successful:'), result.text);
 
     // Skip if source and target languages are the same
     if (result.from.language.iso === targetLang) {
@@ -212,11 +215,17 @@ async function startBot(retryCount = 0) {
         const text = message.body.trim();
         const sender = message.from;
         
+        // Debug logging for Cloud9
+        console.log(chalk.blue('[DEBUG] Message received:'), text);
+        console.log(chalk.blue('[DEBUG] From:'), sender);
+        
         // Process commands
         if (text.startsWith('!translate') || text.startsWith('!t')) {
+          console.log(chalk.yellow('[DEBUG] Processing translate command'));
           const parts = text.split(' ');
           
           if (parts.length < 2) {
+            console.log(chalk.red('[DEBUG] Invalid translate command format'));
             await client.reply(message.from, 'Usage: !translate <text> [target-lang]', message.id);
             return;
           }
@@ -233,8 +242,10 @@ async function startBot(retryCount = 0) {
             textToTranslate = parts.slice(1).join(' ');
           }
           
+          console.log(chalk.yellow('[DEBUG] Translating:'), textToTranslate, 'to', targetLang);
           const translation = await translateText(textToTranslate, targetLang);
           const formattedMessage = formatTranslatedMessage(textToTranslate, translation, config.showOriginal);
+          console.log(chalk.green('[DEBUG] Sending reply'));
           await client.reply(message.from, formattedMessage, message.id);
           return;
         }
@@ -260,7 +271,9 @@ async function startBot(retryCount = 0) {
         }
         
         if (text === '!help') {
+          console.log(chalk.yellow('[DEBUG] Processing help command'));
           const helpMessage = generateHelpMessage();
+          console.log(chalk.green('[DEBUG] Sending help message'));
           await client.reply(message.from, helpMessage, message.id);
           return;
         }
