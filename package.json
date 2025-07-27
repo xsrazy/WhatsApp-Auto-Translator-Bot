@@ -18,7 +18,7 @@
   "author": "Xsrazy (@xsrazy)",
   "license": "MIT",
   "dependencies": {
-    "@open-wa/wa-automate": "^4.67.0",
+    "@open-wa/wa-automate": "^4.76.0",
     "qrcode-terminal": "^0.12.0",
     "google-translate-api-x": "^10.6.7",
     "chalk": "^4.1.2",

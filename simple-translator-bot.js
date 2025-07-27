@@ -184,25 +184,25 @@ async function startBot(retryCount = 0) {
     // Generate a random user agent
     const userAgent = getRandomUserAgent();
     console.log(chalk.blue('Using user agent:'), chalk.gray(userAgent));
-    // Create a new client with basic configuration
+    // Create a new client with optimized configuration
     const client = await create({
       sessionId: 'wa-translator-bot-' + Math.floor(Math.random() * 1000),
       multiDevice: true,
-      authTimeout: 120,
+      authTimeout: 300, // Increased timeout
       qrTimeout: 0,
       throwErrorOnTosBlock: false,
       skipUpdateCheck: true,
       disableSpins: true,
-      headless: true, // Use headless mode for better compatibility
-      useChrome: false, // Use bundled Chromium instead of system Chrome
+      headless: false, // Switch back to non-headless for better stability
+      useChrome: true, // Use system Chrome for better compatibility
+      browserRevision: null, // Use latest available
       chromiumArgs: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
-        '--disable-gpu',
+        '--disable-web-security',
+        '--disable-features=VizDisplayCompositor',
         '--no-first-run',
-        '--no-zygote',
-        '--single-process',
         `--user-agent=${userAgent}`
       ]
     });
