@@ -184,17 +184,16 @@ async function startBot(retryCount = 0) {
     // Generate a random user agent
     const userAgent = getRandomUserAgent();
     console.log(chalk.blue('Using user agent:'), chalk.gray(userAgent));
-    // Create a new client with multiDevice recommended configuration
+    // Create a new client with stable minimal configuration
     const client = await create({
-      sessionId: 'wa-translator-bot-' + Math.floor(Math.random() * 1000),
+      sessionId: 'wa-translator-bot',
       multiDevice: true,
-      authTimeout: 300,
-      qrTimeout: 0,
+      authTimeout: 60,
+      qrTimeout: 30,
       throwErrorOnTosBlock: false,
       skipUpdateCheck: true,
-      disableSpins: true,
-      headless: false,
-      useChrome: true // Recommended for multiDevice support
+      headless: true, // Use headless for better stability
+      useChrome: false // Use bundled chromium for consistency
     });
     
     console.log(chalk.green('WhatsApp Auto Translator Bot is ready!'));
