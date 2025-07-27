@@ -184,63 +184,22 @@ async function startBot(retryCount = 0) {
     // Generate a random user agent
     const userAgent = getRandomUserAgent();
     console.log(chalk.blue('Using user agent:'), chalk.gray(userAgent));
-    // Create a new client
+    // Create a new client with simplified configuration
     const client = await create({
-      sessionId: 'wa-translator-bot-' + Math.floor(Math.random() * 1000), // Random session ID to avoid detection
+      sessionId: 'wa-translator-bot-' + Math.floor(Math.random() * 1000),
       multiDevice: true,
-      authTimeout: 120, // Increased timeout
+      authTimeout: 120,
       qrTimeout: 0,
-      qrQuality: 1,
-      useChrome: true, // Use Chrome instead of Chromium
-      killProcessOnBrowserClose: true,
-      throwErrorOnTosBlock: false, // Don't throw error on TOS block
-      skipUpdateCheck: true, // Skip update check
-      disableSpins: true, // Disable spins
-      cacheEnabled: false, // Disable cache
-      restartOnCrash: true, // Restart on crash
-      headless: false, // Use non-headless mode to appear more human-like
-      browserRevision: '1095492', // Specific Chrome version
-      blockCrashLogs: true,
-      bypassCSP: true, // Bypass Content Security Policy
-      deleteSessionDataOnLogout: true, // Delete session data on logout
-      skipBrokenMethodsCheck: true, // Skip broken methods check
+      throwErrorOnTosBlock: false,
+      skipUpdateCheck: true,
+      disableSpins: true,
+      headless: false,
       chromiumArgs: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
-        '--aggressive-cache-discard',
-        '--disable-cache',
-        '--disable-application-cache',
-        '--disable-offline-load-stale-cache',
-        '--disk-cache-size=0',
-        '--disable-features=IsolateOrigins,site-per-process',
-        '--disable-site-isolation-trials',
-        '--disable-web-security',
-        '--disable-session-crashed-bubble',
-        '--autoplay-policy=no-user-gesture-required',
-        '--disable-extensions',
-        '--disable-component-extensions-with-background-pages',
-        '--disable-default-apps',
-        '--disable-breakpad',
-        '--disable-component-update',
-        '--disable-domain-reliability',
-        '--disable-sync',
-        '--disable-background-networking',
-        '--disable-background-timer-throttling',
-        '--disable-backgrounding-occluded-windows',
-        '--disable-renderer-backgrounding',
-        '--disable-infobars',
-        '--disable-translate',
-        '--disable-features=TranslateUI',
-        '--disable-popup-blocking',
-        '--disable-hang-monitor',
-        '--disable-ipc-flooding-protection',
         '--disable-dev-shm-usage',
-        '--disable-notifications',
-        '--mute-audio',
-        '--no-default-browser-check',
-        '--no-first-run',
-        '--password-store=basic',
-        '--use-mock-keychain',
+        '--disable-web-security',
+        '--disable-features=VizDisplayCompositor',
         `--user-agent=${userAgent}`
       ]
     });
