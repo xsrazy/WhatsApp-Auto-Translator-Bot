@@ -75,7 +75,7 @@ This bot includes mechanisms to avoid and handle WhatsApp's Terms of Service blo
 
 - **Auto-Retry**: Automatically retries connection when a TOS block is detected
 - **Random User Agents**: Uses different browser fingerprints to avoid detection
-- **Stealth Mode**: Implements puppeteer-extra with stealth plugins
+- **Built-in Stealth**: Uses @open-wa/wa-automate's built-in anti-detection features
 - **Session Randomization**: Creates unique session IDs to prevent tracking
 - **Non-Headless Mode**: Uses visible browser to appear more human-like
 
@@ -87,8 +87,6 @@ If you encounter a TOSBLOCK error, the bot will automatically attempt to reconne
 - [google-translate-api-x](https://github.com/AidanWelch/google-translate-api): Google Translate API
 - [qrcode-terminal](https://github.com/gtanner/qrcode-terminal): QR code generation in terminal
 - [chalk](https://github.com/chalk/chalk): Terminal text styling
-- [puppeteer-extra](https://github.com/berstend/puppeteer-extra): Extends puppeteer capabilities
-- [puppeteer-extra-plugin-stealth](https://github.com/berstend/puppeteer-extra/tree/master/packages/puppeteer-extra-plugin-stealth): Avoids detection
 - [random-useragent](https://github.com/skratchdot/random-useragent): Generates random user agents
 
 ## License

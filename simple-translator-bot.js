@@ -11,11 +11,6 @@ const { create, ev } = require('@open-wa/wa-automate');
 const translate = require('google-translate-api-x');
 const chalk = require('chalk');
 const randomUseragent = require('random-useragent');
-const puppeteerExtra = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-
-// Apply stealth plugin
-puppeteerExtra.use(StealthPlugin());
 
 // Configuration
 const config = {
@@ -209,7 +204,6 @@ async function startBot(retryCount = 0) {
       bypassCSP: true, // Bypass Content Security Policy
       deleteSessionDataOnLogout: true, // Delete session data on logout
       skipBrokenMethodsCheck: true, // Skip broken methods check
-      puppeteer: puppeteerExtra, // Use puppeteer-extra with stealth plugin
       chromiumArgs: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
