@@ -1,0 +1,29 @@
+{
+  "name": "wa-translator-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp bot that translates messages between Indonesian, English, and Chinese",
+  "main": "simple-translator-bot.js",
+  "scripts": {
+    "start": "node simple-translator-bot.js"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "translator",
+    "cli",
+    "indonesian",
+    "english",
+    "chinese"
+  ],
+  "author": "Xsrazy (@xsrazy)",
+  "license": "MIT",
+  "dependencies": {
+    "@open-wa/wa-automate": "^4.67.0",
+    "qrcode-terminal": "^0.12.0",
+    "google-translate-api-x": "^10.6.7",
+    "chalk": "^4.1.2",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "random-useragent": "^0.5.0"
+  }
+}
