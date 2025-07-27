@@ -136,8 +136,8 @@ function generateHelpMessage() {
   helpMessage += 'Example: Reply with !id to translate to Indonesian\n\n';
   
   helpMessage += '*Multi-Directional Translation:*\n';
-  helpMessage += 'Semua bahasa dapat saling menerjemahkan satu sama lain\n';
-  helpMessage += 'Contoh: Indonesia → Inggris, Inggris → Cina, Cina → Indonesia\n\n';
+  helpMessage += 'All languages can translate to and from each other\n';
+  helpMessage += 'Example: Indonesian → English, English → Chinese, Chinese → Indonesian\n\n';
   
   helpMessage += '*Supported Languages:*\n';
   helpMessage += '!id = Indonesian (Default)\n';
